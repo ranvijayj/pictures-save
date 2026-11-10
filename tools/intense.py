@@ -96,12 +96,30 @@ def chip(d, x, y, text, fill, fg=BG, size=38):
     return x + w + 2 * px, y + h + 2 * py
 
 
+def wordmark(d):
+    """Brand lockup, top right of every slide: saffron bar + CIVIC SENSE INDIA."""
+    f1 = font(ANTON, 30)
+    f2 = font(ANTON, 30)
+    t1, t2 = "CIVIC SENSE ", "INDIA"
+    w1, h1, ox1, oy1 = tw(d, t1, f1)
+    w2, h2, ox2, oy2 = tw(d, t2, f2)
+    x = W - MARGIN - w1 - w2
+    y = 52
+    d.rectangle([x - 22, y + 2, x - 12, y + h1 + 2], fill=SAFFRON)
+    d.text((x - ox1, y - oy1), t1, font=f1, fill=WHITE)
+    d.text((x + w1 - ox2, y - oy2), t2, font=f2, fill=SAFFRON)
+
+
 def footer(d, n, total):
-    f = font(SEMI, 34)
-    d.text((MARGIN, H - 92), HANDLE, font=f, fill=DIM)
+    wordmark(d)
+    f = font(BOLD, 38)
+    w, h, ox, oy = tw(d, HANDLE, f)
+    d.text((MARGIN - ox, H - 96 - oy), HANDLE, font=f, fill=WHITE)
+    d.rectangle([MARGIN, H - 96 + h + 10, MARGIN + w, H - 96 + h + 14], fill=SAFFRON)
+    f2 = font(SEMI, 34)
     label = f"{n}/{total}"
-    w, h, ox, oy = tw(d, label, f)
-    d.text((W - MARGIN - w - ox, H - 92), label, font=f, fill=DIM)
+    w, h, ox, oy = tw(d, label, f2)
+    d.text((W - MARGIN - w - ox, H - 94 - oy), label, font=f2, fill=DIM)
 
 
 def rule(d, x, y, w, col, h=10):

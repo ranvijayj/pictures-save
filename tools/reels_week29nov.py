@@ -11,4 +11,4 @@ end_card([("SHAHAR KO", WHITE), ("CLEAN BANATE HAIN", WHITE), ("LOG.", SAFFRON)]
 d = os.path.join(ROOT, "reels", "06-bachche-dekhte-hain"); os.makedirs(d, exist_ok=True)
 hook_banner("BACHCHA DEKH RAHA HAI.", "Aap kya sikha rahe ho?", os.path.join(d, "hook_banner.png"))
 end_card([("BACHCHE WAHI", WHITE), ("KARTE HAIN", WHITE), ("JO DEKHTE HAIN.", SAFFRON)],
-         [("Bhejo us parent ko", WHITE), ("jo gaadi se", WHITE), ("kachra fenkta hai.", GOLD)], os.path.join(d, "end_card.png"))
+         [("Bhejo us parent ko", WHITE), ("jo kachra fenkta hai.", GOLD)], os.path.join(d, "end_card.png"))
